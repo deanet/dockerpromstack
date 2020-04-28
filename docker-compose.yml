@@ -11,7 +11,8 @@ volumes:
 services:
 
   prometheus:
-    image: prom/prometheus:v2.13.1
+    #image: prom/prometheus:v2.13.1
+    image: registry.gitlab.com/deanet/docker-dgp:prometheus
     container_name: prometheus
     volumes:
       - ./prometheus/:/etc/prometheus/
@@ -37,7 +38,8 @@ services:
       org.label-schema.group: "monitoring"
 
   alertmanager:
-    image: prom/alertmanager:v0.19.0
+    #image: prom/alertmanager:v0.19.0
+    image: registry.gitlab.com/deanet/docker-dgp:alertmanager
     container_name: alertmanager
     volumes:
       - ./alertmanager/:/etc/alertmanager/
@@ -53,7 +55,8 @@ services:
       org.label-schema.group: "monitoring"
 
   nodeexporter:
-    image: prom/node-exporter:v0.18.1
+    #image: prom/node-exporter:v0.18.1
+    image: registry.gitlab.com/deanet/docker-dgp:nodeexporter
     container_name: nodeexporter
     volumes:
       - /proc:/host/proc:ro
@@ -73,7 +76,8 @@ services:
       org.label-schema.group: "monitoring"
 
   cadvisor:
-    image: google/cadvisor:v0.33.0
+    #image: google/cadvisor:v0.33.0
+    image: registry.gitlab.com/deanet/docker-dgp:cadvisor
     container_name: cadvisor
     volumes:
       - /:/rootfs:ro
@@ -90,7 +94,8 @@ services:
       org.label-schema.group: "monitoring"
 
   grafana:
-    image: grafana/grafana:6.4.3
+    #image: grafana/grafana:6.4.3
+    image: registry.gitlab.com/deanet/docker-dgp:grafana
     container_name: grafana
     volumes:
       - grafana_data:/var/lib/grafana
@@ -111,7 +116,8 @@ services:
       org.label-schema.group: "monitoring"
 
   pushgateway:
-    image: prom/pushgateway:v1.0.0
+    #image: prom/pushgateway:v1.0.0
+    image: registry.gitlab.com/deanet/docker-dgp:pushgateway
     container_name: pushgateway
     restart: unless-stopped
     expose:
@@ -122,7 +128,8 @@ services:
       org.label-schema.group: "monitoring"
 
   caddy:
-    image: stefanprodan/caddy
+    #image: stefanprodan/caddy
+    image: registry.gitlab.com/deanet/docker-dgp:caddy
     container_name: caddy
     ports:
       - "3130:3000"
